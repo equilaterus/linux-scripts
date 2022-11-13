@@ -76,6 +76,8 @@ nvm use 14
 # Optimizations
 sudo systemctl mask systemd-udev-settle
 sudo systemctl disable NetworkManager-wait-online.service
+# Disable update check at startup
+# sudo mv /etc/xdg/autostart/org.kde.discover.notifier.desktop /etc/xdg/autostart.disabled/org.kde.discover.notifier.desktop
 
 # Recommended
 sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
