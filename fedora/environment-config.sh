@@ -76,7 +76,7 @@ nvm use 14
 # Optimizations
 sudo systemctl mask systemd-udev-settle
 sudo systemctl disable NetworkManager-wait-online.service
-# Disable update check at startup
+# Disable check for updates at startup (KDE):
 # sudo mv /etc/xdg/autostart/org.kde.discover.notifier.desktop /etc/xdg/autostart.disabled/org.kde.discover.notifier.desktop
 
 # Recommended
