@@ -65,6 +65,11 @@ sudo flatpak install flathub com.spotify.Client
 sudo flatpak install flathub org.telegram.desktop
 sudo flatpak install flathub org.blender.Blender
 
+# Flatseal (admin flatpak permissions)
+sudo flatpak install flathub com.github.tchx84.Flatseal
+# ProtonUp QT (admin proton runners)
+sudo flatpak install flathub net.davidotek.pupgui2
+
 # NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -77,6 +82,7 @@ nvm use 14
 sudo systemctl mask systemd-udev-settle
 sudo systemctl disable NetworkManager-wait-online.service
 # Disable check for updates at startup (KDE):
+# sudo mkdir /etc/xdg/autostart.disabled
 # sudo mv /etc/xdg/autostart/org.kde.discover.notifier.desktop /etc/xdg/autostart.disabled/org.kde.discover.notifier.desktop
 
 # Recommended
