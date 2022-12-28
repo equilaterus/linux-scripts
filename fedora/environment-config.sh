@@ -59,11 +59,13 @@ sudo dnf remove installed *libreoffice*
 # Game apps
 sudo dnf install steam lutris
 sudo flatpak install flathub org.scummvm.ScummVM
+sudo flatpak install flathub io.github.simple64.simple64
 
 # Other apps
 sudo flatpak install flathub com.spotify.Client
 sudo flatpak install flathub org.telegram.desktop
 sudo flatpak install flathub org.blender.Blender
+sudo flatpak install flathub com.dropbox.Client
 
 # Flatseal (admin flatpak permissions)
 sudo flatpak install flathub com.github.tchx84.Flatseal
