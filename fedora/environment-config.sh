@@ -35,8 +35,7 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 # usermod -aG docker USERNAME
 
 # Dotnet SDKs
-sudo dnf install dotnet-sdk-3.1
-# sudo dnf install dotnet-sdk-6.0
+sudo dnf install dotnet-sdk-6.0
 
 # Sensors
 sudo dnf install lm_sensors xsensors
@@ -94,10 +93,10 @@ sudo dnf groupupdate sound-and-video
 # TERMINAL
 # zsh
 sudo dnf install zsh
-zsh
 # Powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+zsh
 # Set as main terminal
 # usermod --shell /usr/bin/zsh root
 # usermod --shell /usr/bin/zsh USERNAME
