@@ -1,6 +1,8 @@
 # Fedora
 # Automated environment configuration 
 
+# REVIEW AND CUSTOMIZE BEFORE EXECUTING!
+
 sudo dnf install dnf-plugins-core
 sudo dnf install https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
@@ -37,9 +39,6 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 # Dotnet SDKs
 sudo dnf install dotnet-sdk-6.0
 
-# Sensors
-sudo dnf install lm_sensors xsensors
-
 # Scanner
 sudo dnf install simple-scan sane-backends vlc tigervnc setroubleshoot
 
@@ -59,17 +58,60 @@ sudo dnf remove installed *libreoffice*
 sudo dnf install steam lutris
 sudo flatpak install flathub org.scummvm.ScummVM
 sudo flatpak install flathub io.github.simple64.simple64
+sudo flatpak install flathub com.dosbox_x.DOSBox-X
+sudo flatpak install flathub net.fsuae.FS-UAE
+
+# Games
+sudo flatpak install flathub org.openmw.OpenMW
+# Settlers 2:
+# Copy original files to ~/.s25rttr/S2/
+sudo flatpak install flathub info.rttr.Return-To-The-Roots
+# RCT2
+# Recommended to be installed using Lutris Wine (instead of flatkpak)
+# sudo flatpak install flathub io.openrct2.OpenRCT2
 
 # Other apps
 sudo flatpak install flathub com.spotify.Client
 sudo flatpak install flathub org.telegram.desktop
 sudo flatpak install flathub org.blender.Blender
 sudo flatpak install flathub com.dropbox.Client
+sudo flatpak install flathub org.mozilla.Thunderbird
+sudo flatpak install flathub org.gimp.GIMP
+sudo flatpak install flathub org.inkscape.Inkscape
+sudo flatpak install flathub org.audacityteam.Audacity
+sudo flatpak install flathub io.github.achetagames.epic_asset_manager
+sudo flatpak install flathub org.kde.kcolorchooser
+sudo flatpak install flathub org.musescore.MuseScore
+sudo flatpak install flathub com.obsproject.Studio
+
+# Sensors
+sudo dnf install lm_sensors xsensors
+# Optional gui
+# sudo flatpak install flathub org.coolero.Coolero
+
+# Converter
+sudo flatpak install flathub fr.handbrake.ghb
+
+# Downloaders
+sudo flatpak install flathub org.jdownloader.JDownloader
+sudo flatpak install flathub org.qbittorrent.qBittorrent
+sudo flatpak install flathub com.github.unrud.VideoDownloader
 
 # Flatseal (admin flatpak permissions)
 sudo flatpak install flathub com.github.tchx84.Flatseal
 # ProtonUp QT (admin proton runners)
 sudo flatpak install flathub net.davidotek.pupgui2
+
+# TERMINAL
+# zsh
+sudo dnf install zsh
+# Powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+zsh
+# Set as main terminal
+# usermod --shell /usr/bin/zsh root
+# usermod --shell /usr/bin/zsh USERNAME
 
 # NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
@@ -89,14 +131,3 @@ sudo systemctl disable NetworkManager-wait-online.service
 # Recommended
 sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 sudo dnf groupupdate sound-and-video
-
-# TERMINAL
-# zsh
-sudo dnf install zsh
-# Powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-zsh
-# Set as main terminal
-# usermod --shell /usr/bin/zsh root
-# usermod --shell /usr/bin/zsh USERNAME
