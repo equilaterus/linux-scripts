@@ -1,4 +1,4 @@
-# Fedora
+# Fedora 37 / 38
 # Automated environment configuration 
 
 # REVIEW AND CUSTOMIZE BEFORE EXECUTING!
