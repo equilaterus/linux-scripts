@@ -62,10 +62,10 @@ sudo flatpak install flathub com.dosbox_x.DOSBox-X
 sudo flatpak install flathub net.fsuae.FS-UAE
 
 # Games
-sudo flatpak install flathub org.openmw.OpenMW
+# sudo flatpak install flathub org.openmw.OpenMW
 # Settlers 2:
 # Copy original files to ~/.s25rttr/S2/
-sudo flatpak install flathub info.rttr.Return-To-The-Roots
+# sudo flatpak install flathub info.rttr.Return-To-The-Roots
 # RCT2
 # Recommended to be installed using Lutris Wine (instead of flatkpak)
 # sudo flatpak install flathub io.openrct2.OpenRCT2
@@ -127,8 +127,8 @@ nvm use 14
 sudo systemctl mask systemd-udev-settle
 sudo systemctl disable NetworkManager-wait-online.service
 # Disable check for updates at startup (KDE):
-# sudo mkdir /etc/xdg/autostart.disabled
-# sudo mv /etc/xdg/autostart/org.kde.discover.notifier.desktop /etc/xdg/autostart.disabled/org.kde.discover.notifier.desktop
+sudo mkdir /etc/xdg/autostart.disabled
+sudo mv /etc/xdg/autostart/org.kde.discover.notifier.desktop /etc/xdg/autostart.disabled/org.kde.discover.notifier.desktop
 
 # Recommended
 sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
