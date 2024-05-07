@@ -73,6 +73,7 @@ sudo flatpak install flathub net.fsuae.FS-UAE
 # Other apps
 sudo flatpak install flathub com.spotify.Client
 sudo flatpak install flathub org.telegram.desktop
+sudo flatpak install flathub org.signal.Signal
 sudo flatpak install flathub org.blender.Blender
 sudo flatpak install flathub com.dropbox.Client
 sudo flatpak install flathub org.mozilla.Thunderbird
@@ -133,3 +134,8 @@ sudo mv /etc/xdg/autostart/org.kde.discover.notifier.desktop /etc/xdg/autostart.
 # Recommended
 sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 sudo dnf groupupdate sound-and-video
+
+# Hardware specifics
+
+# Logitech peripherals
+# sudo dnf install solaar
