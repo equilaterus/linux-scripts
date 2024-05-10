@@ -40,7 +40,13 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo dnf install dotnet-sdk-6.0
 
 # Scanner
-sudo dnf install simple-scan sane-backends vlc tigervnc setroubleshoot
+sudo dnf install simple-scan sane-backends 
+
+# VLC Player
+sudo dnf install vlc vlc-plugin-gstreamer vlc-plugin-ffmpeg
+
+# Misc
+sudo dnf install tigervnc setroubleshoot
 
 # Bottles gtk error:
 sudo dnf install bottles
