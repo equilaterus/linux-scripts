@@ -48,9 +48,12 @@ sudo dnf install vlc vlc-plugin-gstreamer vlc-plugin-ffmpeg
 # Misc
 sudo dnf install tigervnc setroubleshoot
 
-# Bottles gtk error:
-sudo dnf install bottles
-sudo dnf install gtksourceview5
+# Bottles via flatpak
+sudo flatpak install flathub com.usebottles.bottles
+
+# Bottles with fixed gtk error:
+# sudo dnf install bottles
+# udo dnf install gtksourceview5
 
 # Video previews dolphin
 sudo dnf install ffmpegthumbs
