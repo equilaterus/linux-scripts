@@ -43,7 +43,10 @@ sudo dnf install dotnet-sdk-6.0
 sudo dnf install simple-scan sane-backends 
 
 # VLC Player
-sudo dnf install vlc vlc-plugin-gstreamer vlc-plugin-ffmpeg
+# As Fedora 40 and up it's probably better to use flatpak
+sudo flatpak install flathub org.videolan.VLC
+# sudo dnf install vlc vlc-plugin-gstreamer vlc-plugin-ffmpeg
+
 
 # Misc
 sudo dnf install tigervnc setroubleshoot
@@ -135,11 +138,9 @@ nvm install 14
 nvm use 14
 
 # Optimizations
-sudo systemctl mask systemd-udev-settle
-sudo systemctl disable NetworkManager-wait-online.service
-# Disable check for updates at startup (KDE):
-sudo mkdir /etc/xdg/autostart.disabled
-sudo mv /etc/xdg/autostart/org.kde.discover.notifier.desktop /etc/xdg/autostart.disabled/org.kde.discover.notifier.desktop
+# Run our script optimize.sh
+wget "https://github.com/equilaterus/linux-scripts/blob/main/fedora/optimize.sh"
+sudo sh optimize.sh
 
 # Recommended
 sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
