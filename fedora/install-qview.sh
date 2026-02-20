@@ -4,11 +4,11 @@
 
 set -e
 
-APP="io.github.qview.QView"
+APP="com.interversehq.qView"
 DESKTOP="$APP.desktop"
 
 echo "📦 Installing qView (Flatpak)..."
-flatpak install -y flathub $APP
+sudo flatpak install -y flathub $APP
 
 echo "🖼️ Setting qView as default image viewer..."
 
