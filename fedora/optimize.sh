@@ -41,36 +41,7 @@ if command -v plasmashell &>/dev/null; then
   fi
 fi
 
-# 4. Multimedia Codecs
-if ask "🎵 Codecs: Do you want to install full multimedia codec support (RPM Fusion)?"; then
-  # Check if RPM Fusion repos are already installed
-  if rpm -q rpmfusion-free-release &>/dev/null && rpm -q rpmfusion-nonfree-release &>/dev/null; then
-    echo "✅ RPM Fusion repos are already installed."
-  else
-    echo "🌐 Installing RPM Fusion free & nonfree repos..."
-    sudo dnf install -y \
-      https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-      https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-  fi
-
-  sudo dnf install ffmpegthumbs
-  sudo dnf group install "multimedia" --setopt=install_weak_deps=False --exclude=PackageKit-gstreamer-plugin --skip-broken -y
-  sudo dnf group install --with-optional "sound-and-video" --skip-broken -y
-
-  # Fedy Installer
-  if ask "🧩 WMV Codecs: Do you want to enable the Fedy COPR repo and install Fedy?"; then
-    sudo dnf copr enable kwizart/fedy -y
-    sudo dnf install fedy -y
-    echo "✅ Type fedy on your terminal and go to utilities then install Multimedia codecs."
-  fi
-
-  # VLC
-  if ask "🧩 Additional Codecs: Do you want to enable instal VLC and extra codecs?"; then
-    sudo dnf install vlc vlc-plugin-gstreamer vlc-plugin-ffmpeg -y --skip-broken -y
-  fi
-fi
-
-# 6. DNF Optimization
+# 4. DNF Optimization
 if ask "⚙️ Do you want to optimize DNF (faster downloads, clean cache, autoremove unused packages)?"; then
   DNF_CONF="/etc/dnf/dnf.conf"
   
@@ -99,7 +70,7 @@ EOF
   echo "✅ DNF optimization complete."
 fi
 
-# 7. Final summary
+# 5. Final summary
 cat <<EOF
 
 ✅ All selected optimizations completed.

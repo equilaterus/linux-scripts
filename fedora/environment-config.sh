@@ -1,5 +1,5 @@
 # Fedora 37 / 38 / 39
-# Automated environment configuration 
+# Automated environment configuration
 
 # REVIEW AND CUSTOMIZE BEFORE EXECUTING!
 
@@ -8,7 +8,7 @@ sudo dnf install https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# VS Codium
+# VSCodium
 sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
 printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo
 sudo dnf install codium
@@ -23,7 +23,7 @@ sudo dnf install brave-browser
 # Git
 sudo dnf install git-all
 
-# Github Desktop
+# GitHub Desktop
 sudo rpm --import https://rpm.packages.shiftkey.dev/gpg.key
 sudo sh -c 'echo -e "[shiftkey-packages]\nname=GitHub Desktop\nbaseurl=https://rpm.packages.shiftkey.dev/rpm/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://rpm.packages.shiftkey.dev/gpg.key" > /etc/yum.repos.d/shiftkey-packages.repo'
 sudo dnf install github-desktop
@@ -36,14 +36,14 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 # Add user to docker group
 # usermod -aG docker USERNAME
 
-# Dotnet SDKs
+# .NET SDKs
 sudo dnf install dotnet-sdk-6.0
 
 # Scanner
 sudo dnf install simple-scan sane-backends 
 
 # VLC Player
-# As Fedora 40 and up it's probably better to use flatpak
+# On Fedora 40+, it is probably better to use Flatpak
 sudo flatpak install flathub org.videolan.VLC
 # sudo dnf install vlc vlc-plugin-gstreamer vlc-plugin-ffmpeg
 
@@ -54,14 +54,14 @@ sudo dnf install tigervnc setroubleshoot
 # Bottles via flatpak
 sudo flatpak install flathub com.usebottles.bottles
 
-# Bottles with fixed gtk error:
+# Bottles with fixed GTK error:
 # sudo dnf install bottles
-# udo dnf install gtksourceview5
+# sudo dnf install gtksourceview5
 
-# Video previews dolphin
+# Video previews in Dolphin
 sudo dnf install ffmpegthumbs
 
-# Onlyoffice
+# OnlyOffice
 sudo flatpak install flathub org.onlyoffice.desktopeditors
 # Remove libreoffice
 sudo dnf remove installed *libreoffice*
@@ -80,7 +80,7 @@ sudo flatpak install flathub net.fsuae.FS-UAE
 # Copy original files to ~/.s25rttr/S2/
 # sudo flatpak install flathub info.rttr.Return-To-The-Roots
 # RCT2
-# Recommended to be installed using Lutris Wine (instead of flatkpak)
+# Recommended to be installed using Lutris Wine (instead of Flatpak)
 # sudo flatpak install flathub io.openrct2.OpenRCT2
 
 # Other apps
@@ -100,7 +100,7 @@ sudo flatpak install flathub com.obsproject.Studio
 
 # Sensors
 sudo dnf install lm_sensors xsensors
-# Optional gui
+# Optional GUI
 # sudo flatpak install flathub org.coolero.Coolero
 
 # Converter
@@ -111,9 +111,9 @@ sudo flatpak install flathub org.jdownloader.JDownloader
 sudo flatpak install flathub org.qbittorrent.qBittorrent
 sudo flatpak install flathub com.github.unrud.VideoDownloader
 
-# Flatseal (admin flatpak permissions)
+# Flatseal (manage Flatpak permissions)
 sudo flatpak install flathub com.github.tchx84.Flatseal
-# ProtonUp QT (admin proton runners)
+# ProtonUp-Qt (manage Proton runners)
 sudo flatpak install flathub net.davidotek.pupgui2
 
 # TERMINAL
@@ -123,7 +123,7 @@ sudo dnf install zsh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 zsh
-# Set as main terminal
+# Set as default shell
 # usermod --shell /usr/bin/zsh root
 # usermod --shell /usr/bin/zsh USERNAME
 

@@ -1,3 +1,7 @@
+# Force Brave to use X11 instead of Wayland to avoid errors and improve performance.
+# Useful on Fedora 43 with AMD GPUs.
+# This may change in the future but if you experience crashes with Brave this is the way to go.
+
 #!/usr/bin/env bash
 
 set -e
@@ -9,7 +13,7 @@ FLAG="--ozone-platform=x11"
 
 echo "🔍 Checking Brave launcher..."
 
-# Decide qué archivo usar
+# Decide which launcher file to use
 if [[ -f "$DESKTOP_USER" ]]; then
     DESKTOP_FILE="$DESKTOP_USER"
     LOCATION="user"
@@ -17,7 +21,7 @@ elif [[ -f "$DESKTOP_SYSTEM" ]]; then
     DESKTOP_FILE="$DESKTOP_SYSTEM"
     LOCATION="system"
 else
-    echo "❌ Brave .desktop file not found"
+    echo "❌ Brave .desktop file not found."
     exit 1
 fi
 
