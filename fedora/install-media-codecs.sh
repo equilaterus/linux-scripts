@@ -34,8 +34,9 @@ if ask "🎵 Codecs: Do you want to install full multimedia codec support (RPM F
     echo "✅ Run fedy in your terminal, then go to Utilities and install Multimedia codecs."
   fi
 
-  # VLC
-  if ask "🧩 Additional Codecs: Do you want to install VLC and extra codecs?"; then
-    sudo dnf install vlc vlc-plugin-gstreamer vlc-plugin-ffmpeg -y --skip-broken -y
+  # VLC (Flatpak)
+  if ask "🧩 VLC: Do you want to install VLC from Flathub?"; then
+    sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    sudo flatpak install -y flathub org.videolan.VLC
   fi
 fi
