@@ -10,6 +10,8 @@ DESKTOP="$APP.desktop"
 echo "📦 Installing qView (Flatpak)..."
 sudo flatpak install -y flathub $APP
 
+sudo dnf remove gwenview
+
 echo "🖼️ Setting qView as default image viewer..."
 
 # Common image MIME types
