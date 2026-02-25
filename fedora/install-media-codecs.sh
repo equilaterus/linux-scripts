@@ -39,4 +39,20 @@ if ask "🎵 Codecs: Do you want to install full multimedia codec support (RPM F
     sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     sudo flatpak install -y flathub org.videolan.VLC
   fi
+
+  # Remove default KDE media players
+  if ask "🧹 KDE Players: Do you want to remove Elisa and Dragon and clean their config files?"; then
+    packages_to_remove=()
+    rpm -q elisa-player &>/dev/null && packages_to_remove+=(elisa-player)
+    rpm -q dragon &>/dev/null && packages_to_remove+=(dragon)
+
+    if ((${#packages_to_remove[@]} > 0)); then
+      sudo dnf remove -y "${packages_to_remove[@]}"
+    else
+      echo "ℹ️ Elisa and Dragon are not installed."
+    fi
+
+    rm -rf ~/.config/elisa* ~/.local/share/elisa* ~/.config/dragon*
+    echo "✅ Elisa/Dragon config cleanup completed."
+  fi
 fi
