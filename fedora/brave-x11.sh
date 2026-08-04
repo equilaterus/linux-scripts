@@ -1,15 +1,15 @@
+#!/usr/bin/env bash
+
 # Force Brave to use X11 instead of Wayland to avoid errors and improve performance.
 # Useful on Fedora 43 with AMD GPUs.
 # This may change in the future but if you experience crashes with Brave this is the way to go.
-
-#!/usr/bin/env bash
 
 set -e
 
 DESKTOP_SYSTEM="/usr/share/applications/brave-browser.desktop"
 DESKTOP_USER="$HOME/.local/share/applications/brave-browser.desktop"
 
-FLAG="--ozone-platform=x11"
+EXEC_LINE="Exec=/usr/bin/env -u WAYLAND_DISPLAY EGL_PLATFORM=x11 GDK_BACKEND=x11 /usr/bin/brave-browser-stable --ozone-platform=x11 %U"
 
 echo "🔍 Checking Brave launcher..."
 
@@ -29,8 +29,9 @@ echo "📄 Using $LOCATION launcher:"
 echo "   $DESKTOP_FILE"
 echo
 
-# Check flag
-if grep -q  -- "$FLAG" "$DESKTOP_FILE"; then
+# Check every launcher command, so a partially patched file is fixed too.
+if grep -q '^Exec=' "$DESKTOP_FILE" &&
+    ! grep '^Exec=' "$DESKTOP_FILE" | grep -qvxF "$EXEC_LINE"; then
     echo "✅ Brave is already patched (X11 forced)."
     exit 0
 fi
@@ -48,10 +49,10 @@ fi
 if [[ "$LOCATION" == "system" ]]; then
     echo "🔐 Sudo required to patch system launcher."
     sudo cp "$DESKTOP_FILE" "$DESKTOP_FILE.bak"
-    sudo sed -i "s|^Exec=.*|& $FLAG|" "$DESKTOP_FILE"
+    sudo sed -i "s|^Exec=.*|$EXEC_LINE|" "$DESKTOP_FILE"
 else
     cp "$DESKTOP_FILE" "$DESKTOP_FILE.bak"
-    sed -i "s|^Exec=.*|& $FLAG|" "$DESKTOP_FILE"
+    sed -i "s|^Exec=.*|$EXEC_LINE|" "$DESKTOP_FILE"
 fi
 
 echo "🛠️  Patched successfully."
