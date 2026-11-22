@@ -30,12 +30,14 @@ read_fan() {
 read_fan || { logger -t fan-watchdog "hwmon no encontrado"; exit 0; }
 
 [ "$rpm" -ge "$MIN_RPM" ] && exit 0
-[ "$temp" -lt "$TEMP_MC" ] && [ "$target" -lt 1000 ] && exit 0   # parado y frio: normal
 
+# fault=1 siempre alerta, aunque este frio (el firmware reporta el ventilador averiado)
 if [ "$fault" = 1 ]; then
     alert "Fallo de hardware/firmware (fault=1, ${rpm} RPM, CPU $((temp/1000)) C). Reiniciar el servicio no ayuda: suspende y reanuda el Deck."
     exit 0
 fi
+
+[ "$temp" -lt "$TEMP_MC" ] && [ "$target" -lt 1000 ] && exit 0   # parado y frio: normal
 
 now=$(date +%s); last=$(cat "$STATE" 2>/dev/null || echo 0)
 [ $((now - last)) -lt "$COOLDOWN" ] && exit 0
